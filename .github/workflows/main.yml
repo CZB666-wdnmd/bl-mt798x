@@ -1,0 +1,21 @@
+name: build_uboot_for_wr30u
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build for Xiaomi WR30U
+        run: |
+          sudo apt install build-essential bison flex bc libssl-dev python-is-python3 device-tree-compiler gcc-aarch64-linux-gnu
+          export CROSS_COMPILE=aarch64-linux-gnu-
+          git clone https://github.com/CZB666-wdnmd/bl-mt798x
+          cd bl-mt798x
+          SOC=mt7981 BOARD=xiaomi_wr30u ./build.sh
+          
+      - name: Upload boot image
+        uses: actions/upload-artifact@v3
+        with: 
+            name: wr30u_uboot
+            path: bl-mt798x/output/mt7981_xiaomi_wr30u-fip-fixed-parts.bin

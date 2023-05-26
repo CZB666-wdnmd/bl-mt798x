@@ -1,3 +1,5 @@
+merge a [pull request](https://github.com/hanwckf/bl-mt798x/pull/2) and use github action to build  
+# It is **untested**, if you don't have a progeammer, don't flash it!  
 # ATF and u-boot for GL.iNet products based on mt798x
 
 ![](/u-boot.gif)

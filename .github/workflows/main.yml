@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       fixed_mtdparts:
-        description: 'Fixed mtd parts? (112M ubi, Not compatible with stock firmware)'
+        description: 'Fixed mtd parts? (will not follow uboot env)'
         required: true
         type: boolean
         default: 'true'
@@ -22,7 +22,7 @@ jobs:
           cd bl-mt798x
           SOC=mt7981 BOARD=xiaomi_wr30u ./build.sh
           
-      - name: Build for Xiaomi WR30U with stock mtdparts
+      - name: Build for Xiaomi WR30U
         if: ${{ inputs.fixed_mtdparts == false }}
         run: |
           sudo apt update
@@ -39,7 +39,7 @@ jobs:
             name: wr30u_uboot_fixed-parts
             path: bl-mt798x/output/mt7981_xiaomi_wr30u-fip-fixed-parts.bin
       
-      - name: Upload FIP file with stock mtdparts
+      - name: Upload FIP file
         if: ${{ inputs.fixed_mtdparts == false }}
         uses: actions/upload-artifact@v3
         with: 

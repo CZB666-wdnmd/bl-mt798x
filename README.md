@@ -1,5 +1,5 @@
 merge a [pull request](https://github.com/hanwckf/bl-mt798x/pull/2) and use github action to build  
-# ATF and u-boot for GL.iNet products based on mt798x
+# ATF and u-boot for WR30U
 
 ![](/u-boot.gif)
 
